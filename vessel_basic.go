@@ -34,8 +34,8 @@ type VesselBasicResponse struct {
 }
 
 // XXX this is not tested against the real api
-func (s *VesselService) VesselBasicReal(vesselID string, options VesselBasicParameters) (*VesselBasicResponse, error) {
-	u, err := withOptions(fmt.Sprintf("basicvessel/%s", vesselID), options)
+func (s *VesselService) Basic(vesselID int64, options VesselBasicParameters) (*VesselBasicResponse, error) {
+	u, err := withOptions(fmt.Sprintf("basicvessel/%d", vesselID), options)
 	if err != nil {
 		return nil, err
 	}

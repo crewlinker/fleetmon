@@ -25,8 +25,8 @@ type VesselNonAISResponse struct {
 	VesselID     int    `json:"vessel_id"`
 }
 
-func (s *VesselService) NonAIS(vesselID string, options VesselNonAISParameters) (*VesselNonAISResponse, error) {
-	u, err := withOptions(fmt.Sprintf("vessel_nonais/%s", vesselID), options)
+func (s *VesselService) NonAIS(vesselID int64, options VesselNonAISParameters) (*VesselNonAISResponse, error) {
+	u, err := withOptions(fmt.Sprintf("vessel_nonais/%d", vesselID), options)
 	if err != nil {
 		return nil, err
 	}

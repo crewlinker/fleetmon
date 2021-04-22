@@ -69,6 +69,7 @@ func (c *Client) NewRequest(s string) (*http.Request, error) {
 	}
 
 	req.Header.Add("Content-Type", "application/json")
+	req.Header.Add("Accept", "application/json")
 	req.Header.Add("User-Agent", c.userAgent)
 	req.Header.Add("Api-Key", c.apiKey)
 	return req, nil

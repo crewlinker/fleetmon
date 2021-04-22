@@ -5,16 +5,19 @@ update:
 	go mod tidy
 	go mod verify
 
-fmt:
-	go fmt ./...
-
 lint:
 	golangci-lint run
 
-test: fmt lint
+test: lint
 	go test $(TEST_ARGS) ./...
 
-test-cover: fmt
+test-real: lint
+	@echo "#######################################"
+	@echo "### Remember to export FLEETMON_KEY ###"
+	@echo "#######################################"
+	go test -tags real $(TEST_ARGS) ./...
+
+test-cover:
 	go test $(TEST_ARGS) -coverprofile=coverage.out ./...
 	go tool cover -html=coverage.out
 
