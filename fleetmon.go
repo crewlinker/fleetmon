@@ -31,10 +31,18 @@ type service struct {
 	client *Client
 }
 
-func NewClient(apiKey string) *Client {
+func NewClient(apiKey string, httpClients ...*http.Client) *Client {
+	var httpClient *http.Client
+
+	if len(httpClients) > 0 && httpClients[0] != nil {
+		httpClient = httpClients[0]
+	} else {
+		httpClient = http.DefaultClient
+	}
+
 	baseURL, _ := url.Parse(defaultBaseURL)
 	c := &Client{
-		httpClient: http.DefaultClient,
+		httpClient: httpClient,
 		apiKey:     apiKey,
 		baseURL:    baseURL,
 		userAgent:  userAgent,
@@ -60,6 +68,7 @@ func (c *Client) NewRequest(s string) (*http.Request, error) {
 		return nil, err
 	}
 
+	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("User-Agent", c.userAgent)
 	req.Header.Add("Api-Key", c.apiKey)
 	return req, nil
@@ -69,9 +78,6 @@ func (c *Client) NewRequest(s string) (*http.Request, error) {
 // decoded and stored in the value pointed to by v, or returned as an error if
 // an API error has occurred.
 func (c *Client) Do(req *http.Request, v interface{}) (*http.Response, error) {
-	// Make sure to close the connection after replying to this request
-	req.Close = true
-
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
 		return nil, err
