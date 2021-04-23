@@ -18,8 +18,5 @@ test-real: lint
 	go test -tags real $(TEST_ARGS) ./...
 
 test-cover:
-	go test $(TEST_ARGS) -coverprofile=coverage.out ./...
-	go tool cover -html=coverage.out
-
-clean:
-	rm -f coverage.out
+	go test $(TEST_ARGS) -coverprofile=/tmp/coverage.out ./...
+	go tool cover -html=/tmp/coverage.out
