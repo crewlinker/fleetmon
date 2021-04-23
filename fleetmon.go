@@ -18,13 +18,20 @@ var defaultBaseURL = "https://apiv2.fleetmon.com/"
 
 type VesselService service
 
+// Make it mockable
+type VesselServiceInterface interface {
+	Basic(vesselID int64, options VesselBasicParameters) (*VesselBasicResponse, error)
+	NonAIS(vesselID int64, options VesselNonAISParameters) (*VesselNonAISResponse, error)
+	Search(options VesselSearchParameters) (*VesselSearchResponse, error)
+}
+
 type Client struct {
 	httpClient *http.Client
 	baseURL    *url.URL // baseURL should always be specified with a trailing slash.
 	apiKey     string
 	userAgent  string
 
-	Vessel *VesselService
+	Vessel VesselServiceInterface
 }
 
 type service struct {
