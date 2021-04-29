@@ -4,6 +4,7 @@ import (
 	_ "embed"
 	"encoding/json"
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -58,11 +59,18 @@ type VesselSearchResponse struct {
 }
 
 //go:embed fixtures/search_fairway.json
-var searchFixture []byte
+var searchFairwayFixture []byte
+
+//go:embed fixtures/search_geosea.json
+var searchGeoseaFixture []byte
 
 func (s *VesselService) Search(options VesselSearchParameters) (*VesselSearchResponse, error) {
 	r := new(VesselSearchResponse)
 	if s.client.isTesting() {
+		which := searchFairwayFixture
+		if strings.HasPrefix(strings.ToLower(options.Name), "geo") {
+			which = searchGeoseaFixture
+		}
 		if err := json.Unmarshal(searchFixture, r); err != nil {
 			return nil, err
 		}
