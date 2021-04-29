@@ -1,0 +1,108 @@
+{
+   "vessels" : [
+      {
+         "callsign" : null,
+         "cn_iso2" : "HU",
+         "cn_name" : "Hungary",
+         "imo_number" : null,
+         "length" : 2,
+         "mmsi_number" : 243042727,
+         "name" : "FAIRWAY ATON TYPE 1",
+         "position_received" : "2020-10-25T16:24:00Z",
+         "static_received" : "2020-10-25T16:24:00Z",
+         "vessel_id" : 7757,
+         "vt_verbose" : "Ship"
+      },
+      {
+         "callsign" : "MXOR6",
+         "cn_iso2" : "GB",
+         "cn_name" : "United Kingdom",
+         "imo_number" : 8810798,
+         "length" : 24,
+         "mmsi_number" : 232148000,
+         "name" : "FAIRWAY II",
+         "position_received" : "2021-03-17T10:52:44Z",
+         "static_received" : "2020-11-09T09:54:23Z",
+         "vessel_id" : 47681,
+         "vt_verbose" : "Fishing vessel"
+      },
+      {
+         "callsign" : "MVRV4",
+         "cn_iso2" : "GB",
+         "cn_name" : "United Kingdom",
+         "imo_number" : null,
+         "length" : 11,
+         "mmsi_number" : 235087852,
+         "name" : "FAIRWAY",
+         "position_received" : "2021-03-15T15:54:46Z",
+         "static_received" : "2021-03-15T15:45:04Z",
+         "vessel_id" : 2852969,
+         "vt_verbose" : "Sailing ship"
+      },
+      {
+         "callsign" : "9V8762",
+         "cn_iso2" : "SG",
+         "cn_name" : "Singapore",
+         "imo_number" : 9590319,
+         "length" : 274,
+         "mmsi_number" : 566479000,
+         "name" : "FAIRWAY",
+         "position_received" : "2021-03-17T11:58:04Z",
+         "static_received" : "2021-03-17T10:03:13Z",
+         "vessel_id" : 8134672,
+         "vt_verbose" : "Oil tanker"
+      },
+      {
+         "callsign" : "5BMQ3",
+         "cn_iso2" : "CY",
+         "cn_name" : "Cyprus",
+         "imo_number" : 9132454,
+         "length" : 232,
+         "mmsi_number" : 209469000,
+         "name" : "FAIRWAY",
+         "position_received" : "2021-03-17T12:17:01Z",
+         "static_received" : "2021-03-17T11:06:07Z",
+         "vessel_id" : 8633968,
+         "vt_verbose" : "Dredger"
+      },
+      {
+         "callsign" : null,
+         "cn_iso2" : null,
+         "cn_name" : null,
+         "imo_number" : null,
+         "length" : 2,
+         "mmsi_number" : 971421900,
+         "name" : "RYG FAIRWAY BUOY",
+         "position_received" : "2020-12-12T16:03:31Z",
+         "static_received" : "2020-12-12T16:03:31Z",
+         "vessel_id" : 8691472,
+         "vt_verbose" : "Ship"
+      },
+      {
+         "callsign" : "DB4436",
+         "cn_iso2" : "DE",
+         "cn_name" : "Germany",
+         "imo_number" : null,
+         "length" : 12,
+         "mmsi_number" : 211180360,
+         "name" : "FAIRWAY",
+         "position_received" : "2020-10-05T12:45:50Z",
+         "static_received" : "2020-10-05T12:37:22Z",
+         "vessel_id" : 8975113,
+         "vt_verbose" : "Sailing ship"
+      },
+      {
+         "callsign" : "CA3920",
+         "cn_iso2" : "CL",
+         "cn_name" : "Chile",
+         "imo_number" : null,
+         "length" : 13,
+         "mmsi_number" : 725001269,
+         "name" : "FAIRWAY",
+         "position_received" : "2021-03-17T12:15:45Z",
+         "static_received" : "2021-03-17T11:15:41Z",
+         "vessel_id" : 9306952,
+         "vt_verbose" : "Pilot tender"
+      }
+   ]
+}

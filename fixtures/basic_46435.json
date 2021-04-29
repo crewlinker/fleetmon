@@ -1,0 +1,18 @@
+{
+   "ais_type_of_ship" : 90,
+   "ais_type_of_ship_str" : "other",
+   "callsign" : "PDTR",
+   "cn_iso2" : "NL",
+   "cn_name" : "Netherlands",
+   "fleetmon_url" : "https://www.fleetmon.com/vessels/geosea_9242431_46435/",
+   "image_url" : "https://photos.fleetmon.com/vessels/geosea_9242431_94418_XLarge.jpg",
+   "imo_number" : 9242431,
+   "length" : 85,
+   "mmsi_number" : 245406000,
+   "name" : "GEOSEA",
+   "type" : "Research ship",
+   "type_class" : "highspeed",
+   "type_code" : "EXP",
+   "vessel_id" : 46435,
+   "width" : 15
+}

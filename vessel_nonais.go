@@ -1,6 +1,8 @@
 package fleetmon
 
 import (
+	_ "embed"
+	"encoding/json"
 	"fmt"
 )
 
@@ -25,7 +27,18 @@ type VesselNonAISResponse struct {
 	VesselID     int    `json:"vessel_id"`
 }
 
+//go:embed fixtures/nonais_46435.json
+var nonAISFixture []byte
+
 func (s *VesselService) NonAIS(vesselID int64, options VesselNonAISParameters) (*VesselNonAISResponse, error) {
+	r := new(VesselNonAISResponse)
+	if s.client.isTesting() {
+		if err := json.Unmarshal(nonAISFixture, r); err != nil {
+			return nil, err
+		}
+		return r, nil
+	}
+
 	u, err := withOptions(fmt.Sprintf("vessel_nonais/%d", vesselID), options)
 	if err != nil {
 		return nil, err
@@ -36,7 +49,6 @@ func (s *VesselService) NonAIS(vesselID int64, options VesselNonAISParameters) (
 		return nil, err
 	}
 
-	r := new(VesselNonAISResponse)
 	if resp, err := s.client.Do(req, r); err != nil {
 		return nil, err
 	} else if resp != nil && resp.StatusCode != 200 {

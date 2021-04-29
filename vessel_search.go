@@ -1,6 +1,8 @@
 package fleetmon
 
 import (
+	_ "embed"
+	"encoding/json"
 	"fmt"
 	"time"
 )
@@ -55,7 +57,18 @@ type VesselSearchResponse struct {
 	Vessels []Vessel `json:"vessels"`
 }
 
+//go:embed fixtures/search_fairway.json
+var searchFixture []byte
+
 func (s *VesselService) Search(options VesselSearchParameters) (*VesselSearchResponse, error) {
+	r := new(VesselSearchResponse)
+	if s.client.isTesting() {
+		if err := json.Unmarshal(searchFixture, r); err != nil {
+			return nil, err
+		}
+		return r, nil
+	}
+
 	u, err := withOptions("vesselsearch", options)
 	if err != nil {
 		return nil, err
@@ -66,7 +79,6 @@ func (s *VesselService) Search(options VesselSearchParameters) (*VesselSearchRes
 		return nil, err
 	}
 
-	r := new(VesselSearchResponse)
 	if resp, err := s.client.Do(req, r); err != nil {
 		return nil, err
 	} else if resp != nil && resp.StatusCode != 200 {

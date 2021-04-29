@@ -1,6 +1,8 @@
 package fleetmon
 
 import (
+	_ "embed"
+	"encoding/json"
 	"fmt"
 )
 
@@ -33,8 +35,19 @@ type VesselBasicResponse struct {
 	Width            int    `json:"width"`
 }
 
+//go:embed fixtures/basic_46435.json
+var basicFixture []byte
+
 // XXX this is not tested against the real api
 func (s *VesselService) Basic(vesselID int64, options VesselBasicParameters) (*VesselBasicResponse, error) {
+	r := new(VesselBasicResponse)
+	if s.client.isTesting() {
+		if err := json.Unmarshal(basicFixture, r); err != nil {
+			return nil, err
+		}
+		return r, nil
+	}
+
 	u, err := withOptions(fmt.Sprintf("basicvessel/%d", vesselID), options)
 	if err != nil {
 		return nil, err
@@ -45,7 +58,6 @@ func (s *VesselService) Basic(vesselID int64, options VesselBasicParameters) (*V
 		return nil, err
 	}
 
-	r := new(VesselBasicResponse)
 	if resp, err := s.client.Do(req, r); err != nil {
 		return nil, err
 	} else if resp != nil && resp.StatusCode != 200 {
