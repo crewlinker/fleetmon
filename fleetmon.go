@@ -34,10 +34,15 @@ type Client struct {
 	Vessel VesselServiceInterface
 }
 
+func (c *Client) isTesting() bool {
+	return c.apiKey == "testing"
+}
+
 type service struct {
 	client *Client
 }
 
+// NewClient returns a new fleetmon client. Set apiKey to "testing" to return data from fixtures.
 func NewClient(apiKey string, httpClients ...*http.Client) *Client {
 	var httpClient *http.Client
 
