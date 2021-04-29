@@ -71,7 +71,7 @@ func (s *VesselService) Search(options VesselSearchParameters) (*VesselSearchRes
 		if strings.HasPrefix(strings.ToLower(options.Name), "geo") {
 			which = searchGeoseaFixture
 		}
-		if err := json.Unmarshal(searchFixture, r); err != nil {
+		if err := json.Unmarshal(which, r); err != nil {
 			return nil, err
 		}
 		return r, nil
