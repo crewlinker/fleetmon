@@ -15,6 +15,9 @@ type VesselPhotoResponse struct {
 	Photo string `json:"photo"`
 }
 
+// VesselPhotoParams represents the parameters for the VesselPhoto method.
+//
+// IMO or MMSI number (one of MMSI or IMO or ShipID is required) is rquired for VesselID.
 type VesselPhotoParams struct {
 	VesselID int    `url:"vessel_id,omitempty"` // IMO or MMSI number (one of MMSI or IMO or ShipID is required)
 	ShipID   int    `url:"ship_id,omitempty"`   // Ship ID (one of MMSI or IMO or ShipID is required)

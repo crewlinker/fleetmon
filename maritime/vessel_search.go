@@ -28,6 +28,9 @@ type VesselSearchResponse struct {
 	MTURL        string       `json:"MT_URL"`
 }
 
+// VesselSearchParams represents the parameters for the VesselSearch method.
+//
+// One of ShipName, MMSI, IMO or ShipID is required.
 type VesselSearchParams struct {
 	ShipName   string `url:"shipname,omitempty"`     // Ship name (one of ShipName or MMSI or IMO or ShipID is required)
 	MMSI       int    `url:"mmsi,omitempty"`         // MMSI Maritime Mobile Service Identity (one of ShipName or MMSI or IMO or ShipID is required)

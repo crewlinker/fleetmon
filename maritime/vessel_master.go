@@ -50,7 +50,9 @@ type VesselMasterResponse struct {
 	VesselType             string      `json:"VESSEL_TYPE"`
 }
 
-// VesselMasterParameters represents the parameters to be used in the VesselMasterService
+// VesselMasterParameters represents the parameters to be used in the VesselMasterService.
+//
+// One of MMSI, IMO or ShipID is required.
 type VesselMasterParameters struct {
 	Version     int    `url:"v"`                  // Version of the API to use (default: 5)
 	MMSI        int    `url:"mmsi,omitempty"`     // MMSI Maritime Mobile Service Identity (one of MMSI or IMO or ShipID is required)
